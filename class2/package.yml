@@ -1,0 +1,24 @@
+- hosts: all 
+  vars: 
+    package: 
+      - httpd
+      - wget
+  tasks:
+  - name: install the latest version of Apache
+    yum:
+      name: "{{ package }}"
+      state: latest
+    register: hello
+    ignore_errors: yes
+
+
+  - name: Start apache
+    service:
+      name: "{{ package }}"
+      state: started
+    register: kaizen
+
+
+
+  - debug: msg={{ hello }}
+  - debug: msg={{ kaizen }}

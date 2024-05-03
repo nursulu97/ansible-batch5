@@ -1,0 +1,31 @@
+- hosts: all 
+  tasks:
+  - name: install the latest version of Apache
+    yum:
+      name: 
+        - httpd
+        - git
+      state: latest
+    notify: ReStart apache
+
+
+  - name: Install wget
+    yum: 
+      name: wget
+
+    notify: create group
+
+  
+
+
+  handlers:    
+  - name: ReStart apache
+    service:
+      name: httpd
+      state: restarted
+
+  - name: create group
+    group:
+      name: devops
+      
+      

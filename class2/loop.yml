@@ -1,0 +1,9 @@
+- hosts: all
+  tasks: 
+  - name: Create groups
+    group: 
+      name: "{{ item }}"
+    loop:
+      - devops
+      - dev
+      - qa

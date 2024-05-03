@@ -1,0 +1,13 @@
+- hosts: all
+  tasks: 
+  - name: Copy files
+    copy: 
+      src: /tmp/CentOS.yml #local
+      dest: /root/hello.yml #remote
+      remote_src: yes
+
+  # - name: Create user
+  #   shell: useradd tim
+  
+  - name: Create folder
+    shell: mkdir -p kaizen
